@@ -53,9 +53,13 @@ const ProjectDetails = ({
             </div>
 
             {/* Link ke proyek asli */}
-            <a className="inline-flex items-center gap-1 font-medium cursor-pointer hover-animation">
-              View Project{" "}
-              <img src="assets/arrow-up.svg" className="size-4" href={href} />
+            <a
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 font-medium cursor-pointer hover-animation"
+            >
+              View Project <img src="assets/arrow-up.svg" className="size-4" />
             </a>
           </div>
         </div>
