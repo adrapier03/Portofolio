@@ -1,116 +1,86 @@
-# 🚀 3D Developer Portfolio
+# Portfolio - Ahmad Rafi Rusydi (ADR)
 
-A modern, animated 3D developer portfolio built with React, Three.js, TailwindCSS, and motion effects — designed to help you stand out and showcase your skills creatively.
+Ini adalah personal portfolio website yang dibangun menggunakan **React**, **Vite**, dan **Tailwind CSS**. Website ini dirancang untuk menampilkan profil profesional, pengalaman kerja, proyek-proyek unggulan, dan informasi kontak saya.
 
-![3d Portfolio Screenshot GitHub](https://github.com/user-attachments/assets/9b0ed20e-074e-4f2a-81d8-20c9da751e9e)
+## � Teknologi Utama
 
----
+-   **[React](https://react.dev/)**: Library JavaScript untuk membangun antarmuka pengguna.
+-   **[Vite](https://vitejs.dev/)**: Build tool super cepat untuk frontend modern.
+-   **[Tailwind CSS](https://tailwindcss.com/)**: Framework CSS utility-first untuk styling yang cepat dan custom.
+-   **[EmailJS](https://www.emailjs.com/)**: Layanan untuk mengirim email langsung dari client-side (digunakan di form kontak).
+-   **[Framer Motion](https://www.framer.com/motion/)**: Library animasi untuk React (digunakan untuk transisi dan efek visual).
+-   **[Docker](https://www.docker.com/)**: Digunakan untuk containerization dan deployment yang mudah.
 
-## 📚 Table of Contents
+## � Struktur Proyek
 
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Project Structure](#-project-structure)
-- [Getting Started](#-getting-started)
-- [Assets](#-assets)
-- [Contact Me](#-contact-me)
-- [Suggestions or Feedback](#-suggestions-or-feedback)
-- [Like This Project?](#-like-this-project)
-
----
-
-## ✨ Features
-
-- 🔥 3D visuals powered by **React Three Fiber** and **Drei**
-- ⚡ Smooth transitions and scroll-based animations using **Framer Motion**
-- 🎨 Clean, responsive UI with **TailwindCSS**
-- 💌 Working contact form using **EmailJS**
-- 🧱 Beautiful UI enhancements with **Aceternity UI** and **Magic UI**
-- 🚀 Lightning-fast development with **Vite**
-
----
-
-## 🛠 Tech Stack
-
-| Tech              | Description                           |
-|-------------------|---------------------------------------|
-| React             | Front-end JavaScript library          |
-| Vite              | Fast bundler and dev environment      |
-| TailwindCSS       | Utility-first CSS framework           |
-| React Three Fiber | 3D rendering with Three.js in React   |
-| Drei              | Helpers and abstractions for R3F      |
-| Framer Motion     | Animation library for React           |
-| EmailJS           | Form handling and email integration   |
-| Aceternity UI     | Custom UI components                  |
-| Magic UI          | Prebuilt UI elements and design extras|
-
----
-
-## 📁 Project Structure
-
-```bash
-├── public/
-│   ├── assets/             # Images, textures, models
-│   ├── models/             # 3D Astronaut model
-│   └── vite.svg
-├── src/
-│   ├── components/         # Reusable components
-│   ├── constants/          # Reusable datas
-│   ├── sections/           # Portfolio sections (Hero, About, etc.)
-│   ├── App.jsx             # Main app file
-│   ├── index.css           # Tailwind css
-│   └── main.jsx            # Entry point
-├── tailwind.config.js
-└── vite.config.js
+```
+src/
+├── components/     # Komponen UI reusable (Button, Card, dll)
+├── sections/       # Komponen bagian halaman (Hero, About, Projects, dll)
+├── constants/      # Data statis (list proyek, pengalaman, sosial media)
+├── assets/         # Gambar, ikon, dan aset statis lainnya
+└── App.jsx         # Komponen root aplikasi
 ```
 
----
+## �️ Cara Menjalankan (Development Locall)
 
-## 🚀 Getting Started
-1. Clone the Repository
-```bash
-git clone https://github.com/Ali-Sanati/Portfolio.git
-cd Portfolio
+Untuk menjalankan proyek ini di komputer lokal Anda untuk pengembangan:
+
+1.  **Clone repository ini:**
+    ```bash
+    git clone https://github.com/adrapier03/Portfolio.git
+    cd Portfolio
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Jalankan development server:**
+    ```bash
+    npm run dev
+    ```
+    Buka browser di alamat yang muncul (biasanya `http://localhost:5173`).
+
+## � Cara Menjalankan dengan Docker (Production)
+
+Proyek ini sudah dilengkapi konfigurasi Docker untuk deployment production menggunakan Nginx.
+
+### Menggunakan Docker Compose (Direkomendasikan)
+
+1.  **Build dan jalankan container:**
+    ```bash
+    docker-compose up -d --build
+    ```
+
+2.  **Akses aplikasi:**
+    Buka `http://localhost:8080` di browser Anda.
+
+3.  **Menghentikan aplikasi:**
+    ```bash
+    docker-compose down
+    ```
+
+### Mengonfigurasi Port Deployment
+
+Jika Anda ingin menjalankan aplikasi di port selain **8080**, cukup edit file `docker-compose.yml`:
+
+```yaml
+ports:
+  - "PORT_YANG_ANDA_MAU:80"
 ```
-2. Install Dependencies
-```bash
-npm install
-```
-3. Run the Development Server
-```bash
-npm run dev
-```
-The app will be available at http://localhost:5173.
+Contoh: `"3000:80"` untuk menjalankannya di port 3000.
 
 ---
 
-## 🔗 Assets
-Assets used in the project can be found [here](https://github.com/user-attachments/files/19820923/public.zip)
 
----
+## 🙏 Credits
 
-## 📬 Contact Me
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://www.instagram.com/ali.sanatidev/reels/) 
-[![Static Badge](https://img.shields.io/badge/Youtube-%23FF0033?style=flat&logo=youtube)](https://www.youtube.com/channel/UCZhtUWTtk3bGJiMPN9T4HWA)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ali-sanati/) 
+This project is based on the portfolio template by **[Ali Sanati](https://github.com/Ali-Sanati)**.
+Original Repository: [Ali-Sanati/Portfolio](https://github.com/Ali-Sanati/Portfolio)
 
----
+## 📝 Lisensi
 
-## 💡 Suggestions or Feedback?
-Leave a comment on the [YouTube video](https://youtu.be/S9UQItTpwUQ) or open an issue here on GitHub.<br/>
-👉 What should I build next?
+[MIT](LICENSE)
 
-- A beautiful Landing Page
-
-- A complete E-commerce site
-
-- A fun App Clone (YouTube, Netflix, etc.)
-
-Or another interactive Portfolio
-
-Let me know!
-
----
-
-## ⭐ Like This Project?
-Star the repo and [subscribe](https://www.youtube.com/channel/UCZhtUWTtk3bGJiMPN9T4HWA??sub_confirmation=1) to the YouTube channel for more dev content!
