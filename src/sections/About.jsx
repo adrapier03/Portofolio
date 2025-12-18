@@ -4,91 +4,95 @@ import { Globe } from "../components/globe";
 import CopyEmailButton from "../components/CopyEmailButton";
 import { Frameworks } from "../components/FrameWorks";
 
+// Komponen About: Menampilkan informasi tentang pengguna, keahlian, dan cara menghubungi
 const About = () => {
+  // useRef digunakan untuk referensi elemen DOM kontainer grid 2 (untuk efek drag/interaksi pada Card)
   const grid2Container = useRef();
   return (
+    // Section utama dengan ID 'about' untuk navigasi scroll
     <section className="c-space section-spacing" id="about">
       <h2 className="text-heading">About Me</h2>
+      {/* Grid Container: Mengatur tata letak grid responsif (1 kolom di mobile, 6 kolom di tablet/desktop) */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-12">
-        {/* Grid 1 */}
+
+        {/* Grid 1: Perkenalan Diri & Gambar */}
+        {/* Menampilkan gambar coding dan teks perkenalan singkat */}
         <div className="flex items-end grid-default-color grid-1">
           <img
-            src="assets/coding-pov.png"
-            className="absolute scale-[1.75] -right-[5rem] -top-[1rem] md:scale-[3] md:left-50 md:inset-y-10 lg:scale-[2.5]"
+            src="assets/Server.png"
+            className="absolute scale-[1.1] -right-[1rem] -top-[1rem] md:scale-[3] md:left-5 md:inset-y-10 lg:scale-[1.3]"
           />
           <div className="z-10">
-            <p className="headtext">Hi, I'm Ali Sanati</p>
             <p className="subtext">
-              Over the last 4 years, I developed my frontend and backend dev
-              skills to deliver dynamic and software and web applications.
+              Independent Validator securing the network.
+              Focused on reliability, uptime, and technical excellence to drive a transparent blockchain ecosystem.
             </p>
           </div>
+          {/* Overlay gradient di bagian bawah untuk estetika */}
           <div className="absolute inset-x-0 pointer-evets-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-indigo" />
         </div>
-        {/* Grid 2 */}
+
+        {/* Grid 2: My Services */}
+        {/* Menampilkan kartu-kartu layanan validator */}
         <div className="grid-default-color grid-2">
           <div
             ref={grid2Container}
             className="flex items-center justify-center w-full h-full"
           >
-            <p className="flex items-end text-5xl text-gray-500">
-              CODE IS CRAFT
-            </p>
+            <div className="absolute z-10 text-left left-8 top-1/2 -translate-y-1/2">
+              <p className="text-sm text-gray-400">I constantly try to improve</p>
+              <p className="text-5xl font-bold text-white">My services</p>
+            </div>
+            {/* Kartu-kartu layanan validator dengan posisi yang disesuaikan */}
             <Card
-              style={{ rotate: "75deg", top: "30%", left: "20%" }}
-              text="GRASP"
+              style={{ top: "1%", right: "30%" }}
+              text="RPC Node"
               containerRef={grid2Container}
             />
             <Card
-              style={{ rotate: "-30deg", top: "60%", left: "45%" }}
-              text="SOLID"
+              style={{ top: "15%", right: "1%" }}
+              text="Snapshot"
               containerRef={grid2Container}
             />
             <Card
-              style={{ rotate: "90deg", bottom: "30%", left: "70%" }}
-              text="Design Patterns"
+              style={{ top: "30%", right: "30%" }}
+              text="Guide Installation"
               containerRef={grid2Container}
             />
             <Card
-              style={{ rotate: "-45deg", top: "55%", left: "0%" }}
-              text="Design Principles"
+              style={{ top: "45%", right: "1%" }}
+              text="Validator"
               containerRef={grid2Container}
             />
             <Card
-              style={{ rotate: "20deg", top: "10%", left: "38%" }}
-              text="SRP"
+              style={{ top: "60%", right: "30%" }}
+              text="Public Endpoint"
               containerRef={grid2Container}
             />
             <Card
-              style={{ rotate: "30deg", top: "70%", left: "70%" }}
-              image="assets/logos/csharp-pink.png"
-              containerRef={grid2Container}
-            />
-            <Card
-              style={{ rotate: "-45deg", top: "70%", left: "25%" }}
-              image="assets/logos/dotnet-pink.png"
-              containerRef={grid2Container}
-            />
-            <Card
-              style={{ rotate: "-45deg", top: "5%", left: "10%" }}
-              image="assets/logos/blazor-pink.png"
+              style={{ top: "75%", right: "1%" }}
+              text="Storage Node"
               containerRef={grid2Container}
             />
           </div>
         </div>
-        {/* Grid 3 */}
+
+        {/* Grid 3: Lokasi & Zona Waktu */}
+        {/* Menampilkan globe interaktif dan informasi lokasi */}
         <div className="grid-black-color grid-3">
           <div className="z-10 w-[50%]">
-            <p className="headtext">Time Zone</p>
+            <p className="headtext">Global Validator</p>
             <p className="subtext">
-              I'm based in Mars, and open to remote work worldwide
+              Running reliable nodes across time zones, ensuring worldwide network stability.
             </p>
           </div>
           <figure className="absolute left-[30%] top-[10%]">
             <Globe />
           </figure>
         </div>
-        {/* Grid 4 */}
+
+        {/* Grid 4: Kontak */}
+        {/* Bagian ajakan untuk memulai proyek dan tombol copy email */}
         <div className="grid-special-color grid-4">
           <div className="flex flex-col items-center justify-center gap-4 size-full">
             <p className="text-center headtext">
@@ -97,7 +101,9 @@ const About = () => {
             <CopyEmailButton />
           </div>
         </div>
-        {/* Grid 5 */}
+
+        {/* Grid 5: Tech Stack */}
+        {/* Menampilkan daftar teknologi yang dikuasai */}
         <div className="grid-default-color grid-5">
           <div className="z-10 w-[50%]">
             <p className="headText">Teck Stack</p>

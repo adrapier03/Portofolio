@@ -1,6 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import React, { useEffect, useRef, useState } from "react";
 
+// Hook kustom untuk melacak posisi mouse
 function MousePosition() {
   const [mousePosition, setMousePosition] = useState({
     x: 0,
@@ -22,6 +23,7 @@ function MousePosition() {
   return mousePosition;
 }
 
+// Fungsi helper untuk mengubah warna HEX ke RGB
 function hexToRgb(hex) {
   hex = hex.replace("#", "");
 
@@ -39,16 +41,17 @@ function hexToRgb(hex) {
   return [red, green, blue];
 }
 
+// Komponen Particles: Membuat efek latar belakang partikel interaktif
 export const Particles = ({
   className = "",
-  quantity = 100,
-  staticity = 50,
-  ease = 50,
-  size = 0.4,
-  refresh = false,
-  color = "#ffffff",
-  vx = 0,
-  vy = 0,
+  quantity = 100, // Jumlah partikel
+  staticity = 50, // Kekakuan gerakan terhadap mouse
+  ease = 50, // Kehalusan gerakan
+  size = 0.4, // Ukuran partikel
+  refresh = false, // Trigger refresh canvas
+  color = "#ffffff", // Warna partikel
+  vx = 0, // Kecepatan horizontal
+  vy = 0, // Kecepatan vertikal
   ...props
 }) => {
   const canvasRef = useRef(null);
@@ -62,6 +65,7 @@ export const Particles = ({
   const rafID = useRef(null);
   const resizeTimeout = useRef(null);
 
+  // Inisialisasi canvas saat komponen dimuat
   useEffect(() => {
     if (canvasRef.current) {
       context.current = canvasRef.current.getContext("2d");
@@ -69,6 +73,7 @@ export const Particles = ({
     initCanvas();
     animate();
 
+    // Menangani resize window
     const handleResize = () => {
       if (resizeTimeout.current) {
         clearTimeout(resizeTimeout.current);
@@ -91,6 +96,7 @@ export const Particles = ({
     };
   }, [color]);
 
+  // Update posisi mouse relatif terhadap canvas
   useEffect(() => {
     onMouseMove();
   }, [mousePosition.x, mousePosition.y]);
@@ -118,6 +124,7 @@ export const Particles = ({
     }
   };
 
+  // Mengatur ukuran canvas sesuai container
   const resizeCanvas = () => {
     if (canvasContainerRef.current && canvasRef.current && context.current) {
       canvasSize.current.w = canvasContainerRef.current.offsetWidth;
@@ -138,6 +145,7 @@ export const Particles = ({
     }
   };
 
+  // Membuat parameter acak untuk setiap lingkaran (partikel)
   const circleParams = () => {
     const x = Math.floor(Math.random() * canvasSize.current.w);
     const y = Math.floor(Math.random() * canvasSize.current.h);
@@ -165,6 +173,7 @@ export const Particles = ({
 
   const rgb = hexToRgb(color);
 
+  // Menggambar satu lingkaran
   const drawCircle = (circle, update = false) => {
     if (context.current) {
       const { x, y, translateX, translateY, size, alpha } = circle;
@@ -207,10 +216,11 @@ export const Particles = ({
     return remapped > 0 ? remapped : 0;
   };
 
+  // Loop animasi utama
   const animate = () => {
     clearContext();
     circles.current.forEach((circle, i) => {
-      // Handle the alpha value
+      // Handle the alpha value (transparansi berdasarkan jarak ke tepi)
       const edge = [
         circle.x + circle.translateX - circle.size, // distance from left edge
         canvasSize.current.w - circle.x - circle.translateX - circle.size, // distance from right edge
@@ -229,6 +239,8 @@ export const Particles = ({
       } else {
         circle.alpha = circle.targetAlpha * remapClosestEdge;
       }
+
+      // Update posisi berdasarkan kecepatan dan magnet mouse
       circle.x += circle.dx + vx;
       circle.y += circle.dy + vy;
       circle.translateX +=
@@ -240,7 +252,7 @@ export const Particles = ({
 
       drawCircle(circle, true);
 
-      // circle gets out of the canvas
+      // Reset partikel jika keluar dari canvas
       if (
         circle.x < -circle.size ||
         circle.x > canvasSize.current.w + circle.size ||

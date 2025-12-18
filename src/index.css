@@ -1,20 +1,38 @@
+/* Impor font Funnel Display dari Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap");
+/* Impor Tailwind CSS untuk styling */
 @import "tailwindcss";
+/* Definisi tema warna dan animasi kustom */
 @theme {
+  /* Warna utama untuk background */
   --color-primary: #030412;
+  /* Warna midnight untuk elemen background */
   --color-midnight: #06091f;
+  /* Warna navy untuk elemen background */
   --color-navy: #161a31;
+  /* Warna indigo untuk elemen background */
   --color-indigo: #1f1e39;
+  /* Warna storm untuk elemen background */
   --color-storm: #282b4b;
+  /* Warna aqua untuk elemen aksen */
   --color-aqua: #33c2cc;
+  /* Warna mint untuk elemen aksen */
   --color-mint: #57db96;
+  /* Warna royal untuk elemen aksen */
   --color-royal: #5c33cc;
+  /* Warna lavender untuk elemen aksen */
   --color-lavender: #7a57db;
+  /* Warna fuchsia untuk elemen aksen */
   --color-fuchsia: #ca2f8c;
+  /* Warna orange untuk elemen aksen */
   --color-orange: #cc6033;
+  /* Warna sand untuk elemen aksen */
   --color-sand: #d6995c;
+  /* Warna coral untuk elemen aksen */
   --color-coral: #ea4884;
+  /* Definisi animasi orbit untuk efek gerak melingkar */
   --animate-orbit: orbit 50s linear infinite;
+  /* Animasi untuk efek orbit */
   @keyframes orbit {
     0% {
       transform: rotate(calc(var(--angle) * 1deg))
@@ -26,9 +44,12 @@
         rotate(calc((var(--angle) * -1deg) - 360deg));
     }
   }
+  /* Definisi animasi marquee untuk efek gerak horizontal */
   --animate-marquee: marquee 50s linear infinite;
+  /* Definisi animasi marquee vertikal untuk efek gerak vertikal */
   --animate-marquee-vertical: marquee-vertical 50s linear infinite;
 
+  /* Animasi marquee untuk gerak horizontal */
   @keyframes marquee {
     from {
       transform: translateX(0);
@@ -38,6 +59,7 @@
     }
   }
 
+  /* Animasi marquee untuk gerak vertikal */
   @keyframes marquee-vertical {
     from {
       transform: translateY(0);
@@ -47,92 +69,114 @@
     }
   }
 }
+/* Styling untuk elemen body */
 body {
-  background: #030412;
-  font-family: "Funnel Display", sans-serif;
-  color: white;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
+  background: #030412; /* Background warna gelap */
+  font-family: "Funnel Display", sans-serif; /* Font yang digunakan */
+  color: white; /* Warna teks putih */
+  scroll-behavior: smooth; /* Efek scroll halus */
+  overflow-x: hidden; /* Sembunyikan overflow horizontal */
 }
 
+/* Kelas untuk padding horizontal */
 .c-space {
-  @apply sm:px-10 px-5 lg:px-15;
+  @apply sm:px-10 px-5 lg:px-15; /* Padding horizontal yang responsif */
 }
 
+/* Kelas untuk efek hover */
 .hover-animation {
-  @apply hover:-translate-y-1 duration-200;
+  @apply hover:-translate-y-1 duration-200; /* Efek naik sedikit saat hover dengan durasi 200ms */
 }
 
+/* Kelas untuk spacing antar section */
 .section-spacing {
-  @apply min-h-screen mt-20 md:mt-30;
+  @apply min-h-screen mt-20 md:mt-30; /* Minimum tinggi satu layar dengan margin atas */
 }
 
+/* Kelas untuk heading teks */
 .text-heading {
-  @apply font-bold text-3xl md:text-4xl;
+  @apply font-bold text-3xl md:text-4xl; /* Teks heading tebal dengan ukuran responsif */
 }
 
+/* Kelas untuk teks heading kecil */
 .headtext {
-  @apply mt-2 mb-2 text-xl;
+  @apply mt-2 mb-2 text-xl; /* Teks dengan margin atas dan bawah, ukuran xl */
 }
 
+/* Kelas untuk teks subjudul */
 .subtext {
-  @apply text-neutral-400 text-sm md:text-base text-pretty;
+  @apply text-neutral-400 text-sm md:text-base text-pretty; /* Warna teks abu-abu netral dengan ukuran responsif */
 }
 
 /* Navigation */
+/* Kelas untuk list navigasi */
 .nav-ul {
-  @apply flex flex-col items-center gap-4 sm:flex-row md:gap-6 relative z-20;
+  @apply flex flex-col items-center gap-4 sm:flex-row md:gap-6 relative z-20; /* Layout fleksibel untuk navigasi */
 }
 
+/* Kelas untuk item list navigasi */
 .nav-li {
-  @apply text-neutral-400 hover:text-white max-sm:w-full max-sm:rounded-md py-2 max-sm:px-5;
+  @apply text-neutral-400 hover:text-white max-sm:w-full max-sm:rounded-md py-2 max-sm:px-5; /* Warna dan efek hover untuk item navigasi */
 }
 
+/* Kelas untuk link navigasi */
 .nav-link {
-  @apply text-lg md:text-base hover:text-white transition-colors;
+  @apply text-lg md:text-base hover:text-white transition-colors; /* Ukuran teks dan efek transisi warna untuk link navigasi */
 }
 /* Button Components */
+/* Kelas untuk tombol */
 .btn {
-  @apply relative px-1 py-4 text-sm text-center rounded-full font-extralight bg-primary w-[12rem] cursor-pointer overflow-hidden;
+  @apply relative px-1 py-4 text-sm text-center rounded-full font-extralight bg-primary w-[12rem] cursor-pointer overflow-hidden; /* Styling tombol dengan background primer */
 }
 
 /* About Section */
+/* Kelas untuk grid item pertama */
 .grid-1 {
-  @apply row-span-2 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+  @apply row-span-2 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200; /* Grid item dengan span 2 baris pada layar kecil */
 }
+/* Kelas untuk grid item kedua */
 .grid-2 {
-  @apply row-span-1 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+  @apply row-span-1 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200; /* Grid item dengan span 1 baris */
 }
+/* Kelas untuk grid item ketiga */
 .grid-3 {
-  @apply row-span-1 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+  @apply row-span-1 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200; /* Grid item dengan span 1 baris */
 }
+/* Kelas untuk grid item keempat */
 .grid-4 {
-  @apply row-span-1 md:col-span-2 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+  @apply row-span-1 md:col-span-2 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200; /* Grid item dengan span 2 kolom pada layar medium ke atas */
 }
+/* Kelas untuk grid item kelima */
 .grid-5 {
-  @apply row-span-1 md:col-span-4 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+  @apply row-span-1 md:col-span-4 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200; /* Grid item dengan span 4 kolom pada layar medium ke atas */
 }
 
+/* Kelas untuk warna default grid */
 .grid-default-color {
-  @apply p-6 bg-gradient-to-b from-storm to-indigo rounded-2xl;
+  @apply p-6 bg-gradient-to-b from-storm to-indigo rounded-2xl; /* Gradient background untuk grid default */
 }
 
+/* Kelas untuk warna spesial grid */
 .grid-special-color {
-  @apply p-6 bg-gradient-to-b from-royal to-lavender rounded-2xl;
+  @apply p-6 bg-gradient-to-b from-royal to-lavender rounded-2xl; /* Gradient background untuk grid dengan warna spesial */
 }
+/* Kelas untuk warna hitam grid */
 .grid-black-color {
-  @apply p-6 bg-gradient-to-tl from-[#3A3A3A] via-[#242424] to-[#3A3A3A] rounded-2xl;
+  @apply p-6 bg-gradient-to-tl from-[#3A3A3A] via-[#242424] to-[#3A3A3A] rounded-2xl; /* Gradient background hitam untuk grid */
 }
 
 /* Contact Section*/
+/* Kelas untuk label form */
 .field-label {
-  @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
+  @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70; /* Styling untuk label form */
 }
 
+/* Kelas untuk input form */
 .field-input {
-  @apply w-full min-h-10 rounded-md px-3 py-2 text-sm bg-white/10 transition duration-200 placeholder-neutral-500 border border-white/10 mt-2;
+  @apply w-full min-h-10 rounded-md px-3 py-2 text-sm bg-white/10 transition duration-200 placeholder-neutral-500 border border-white/10 mt-2; /* Styling untuk input form */
 }
 
+/* Kelas untuk fokus input form */
 .field-input-focus {
-  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20;
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20; /* Styling untuk fokus input form */
 }

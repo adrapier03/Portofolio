@@ -11,26 +11,35 @@ import { useGLTF, useAnimations } from "@react-three/drei";
 import { useMotionValue, useSpring } from "motion/react";
 import { useFrame } from "@react-three/fiber";
 
+// Komponen Astronaut: Menampilkan model 3D astronot
 export function Astronaut(props) {
   const group = useRef();
+  // Memuat model 3D GLTF dan animasinya
   const { nodes, materials, animations } = useGLTF(
     "/models/tenhun_falling_spaceman_fanart.glb"
   );
   const { actions } = useAnimations(animations, group);
+
+  // Memainkan animasi pertama saat komponen dimuat
   useEffect(() => {
     if (animations.length > 0) {
       actions[animations[0].name]?.play();
     }
   }, [actions, animations]);
 
+  // Menggunakan motion value dan spring untuk animasi posisi Y yang halus
   const yPosition = useMotionValue(5);
   const ySpring = useSpring(yPosition, { damping: 30 });
+
   useEffect(() => {
-    ySpring.set(-1);
+    ySpring.set(-1); // Target posisi Y
   }, [ySpring]);
+
+  // Mengupdate posisi Y setiap frame render
   useFrame(() => {
     group.current.position.y = ySpring.get();
   });
+
   return (
     <group
       ref={group}

@@ -1,23 +1,25 @@
 import { twMerge } from "tailwind-merge";
+
+// Komponen Marquee: Membuat efek teks/elemen berjalan (scrolling) tanpa henti
 export default function Marquee({
   className,
-  reverse = false,
-  pauseOnHover = false,
+  reverse = false, // Arah scroll (default: kiri)
+  pauseOnHover = false, // Berhenti saat mouse hover
   children,
-  vertical = false,
-  repeat = 4,
+  vertical = false, // Mode vertikal
+  repeat = 4, // Jumlah pengulangan konten agar terlihat seamless
   ...props
 }) {
   return (
     <div
       {...props}
       className={twMerge(
-        `group flex overflow-hidden p-2 [--duration:40s] [--gap:1rem] [gap:var(--gap)] ${
-          vertical ? "flex-col" : "flex-row"
+        `group flex overflow-hidden p-2 [--duration:40s] [--gap:1rem] [gap:var(--gap)] ${vertical ? "flex-col" : "flex-row"
         }`,
         className
       )}
     >
+      {/* Mengulang konten sebanyak 'repeat' kali */}
       {Array(repeat)
         .fill(0)
         .map((_, i) => (

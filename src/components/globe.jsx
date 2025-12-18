@@ -6,12 +6,14 @@ import { useEffect, useRef } from "react";
 
 import { twMerge } from "tailwind-merge";
 
+// Konstanta untuk redaman gerakan interaksi
 const MOVEMENT_DAMPING = 1400;
 
+// Konfigurasi default untuk globe
 const GLOBE_CONFIG = {
   width: 800,
   height: 800,
-  onRender: () => {},
+  onRender: () => { },
   devicePixelRatio: 2,
   phi: 0,
   theta: 0.3,
@@ -36,13 +38,15 @@ const GLOBE_CONFIG = {
   ],
 };
 
+// Komponen Globe: Menampilkan globe 3D interaktif menggunakan library 'cobe'
 export function Globe({ className, config = GLOBE_CONFIG }) {
-  let phi = 0;
+  let phi = 0; // Sudut rotasi horizontal
   let width = 0;
   const canvasRef = useRef(null);
   const pointerInteracting = useRef(null);
   const pointerInteractionMovement = useRef(0);
 
+  // Menggunakan motion value dan spring untuk animasi rotasi yang halus
   const r = useMotionValue(0);
   const rs = useSpring(r, {
     mass: 1,
@@ -50,6 +54,7 @@ export function Globe({ className, config = GLOBE_CONFIG }) {
     stiffness: 100,
   });
 
+  // Mengupdate status interaksi pointer (mouse/touch)
   const updatePointerInteraction = (value) => {
     pointerInteracting.current = value;
     if (canvasRef.current) {
@@ -57,6 +62,7 @@ export function Globe({ className, config = GLOBE_CONFIG }) {
     }
   };
 
+  // Mengupdate rotasi berdasarkan gerakan pointer
   const updateMovement = (clientX) => {
     if (pointerInteracting.current !== null) {
       const delta = clientX - pointerInteracting.current;
@@ -75,11 +81,13 @@ export function Globe({ className, config = GLOBE_CONFIG }) {
     window.addEventListener("resize", onResize);
     onResize();
 
+    // Inisialisasi globe
     const globe = createGlobe(canvasRef.current, {
       ...config,
       width: width * 2,
       height: width * 2,
       onRender: (state) => {
+        // Rotasi otomatis jika tidak ada interaksi
         if (!pointerInteracting.current) phi += 0.005;
         state.phi = phi + rs.get();
         state.width = width * 2;
@@ -106,6 +114,7 @@ export function Globe({ className, config = GLOBE_CONFIG }) {
           "size-[30rem] opacity-0 transition-opacity duration-500 [contain:layout_paint_size]"
         )}
         ref={canvasRef}
+        // Event handlers untuk interaksi
         onPointerDown={(e) => {
           pointerInteracting.current = e.clientX;
           updatePointerInteraction(e.clientX);

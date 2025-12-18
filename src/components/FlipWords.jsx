@@ -2,17 +2,21 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
+
+// Komponen FlipWords: Menganimasikan pergantian kata dengan efek flip
 export const FlipWords = ({ words, duration = 3000, className }) => {
   const [currentWord, setCurrentWord] = useState(words[0]);
   const [isAnimating, setIsAnimating] = useState(false);
 
   // thanks for the fix Julian - https://github.com/Julian-AT
+  // Fungsi untuk memulai animasi pergantian kata
   const startAnimation = useCallback(() => {
     const word = words[words.indexOf(currentWord) + 1] || words[0];
     setCurrentWord(word);
     setIsAnimating(true);
   }, [currentWord, words]);
 
+  // Effect untuk memicu animasi secara berkala sesuai durasi
   useEffect(() => {
     if (!isAnimating)
       setTimeout(() => {
@@ -52,6 +56,7 @@ export const FlipWords = ({ words, duration = 3000, className }) => {
         key={currentWord}
       >
         {/* edit suggested by Sajal: https://x.com/DewanganSajal */}
+        {/* Memecah kata menjadi huruf-huruf untuk animasi per huruf */}
         {currentWord.split(" ").map((word, wordIndex) => (
           <motion.span
             key={word + wordIndex}

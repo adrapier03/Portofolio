@@ -1,4 +1,4 @@
-# Portfolio - Ahmad Rafi Rusydi (ADR)
+# Portfolio - ADR
 
 Ini adalah personal portfolio website yang dibangun menggunakan **React**, **Vite**, dan **Tailwind CSS**. Website ini dirancang untuk menampilkan profil profesional, pengalaman kerja, proyek-proyek unggulan, dan informasi kontak saya.
 

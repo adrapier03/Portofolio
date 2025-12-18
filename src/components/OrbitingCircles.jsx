@@ -1,20 +1,22 @@
 import { twMerge } from "tailwind-merge";
 import React from "react";
 
+// Komponen OrbitingCircles: Membuat efek elemen yang berputar mengelilingi pusat (orbit)
 export function OrbitingCircles({
   className,
   children,
-  reverse,
-  duration = 20,
-  radius = 160,
-  path = true,
-  iconSize = 30,
-  speed = 1,
+  reverse, // Membalik arah putaran
+  duration = 20, // Durasi satu putaran penuh (detik)
+  radius = 160, // Jari-jari orbit
+  path = true, // Menampilkan garis lintasan orbit
+  iconSize = 30, // Ukuran ikon yang berputar
+  speed = 1, // Kecepatan putaran
   ...props
 }) {
   const calculatedDuration = duration / speed;
   return (
     <>
+      {/* Menggambar garis lintasan orbit jika path=true */}
       {path && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +32,10 @@ export function OrbitingCircles({
           />
         </svg>
       )}
+
+      {/* Menganimasikan setiap anak elemen (children) agar berputar */}
       {React.Children.map(children, (child, index) => {
+        // Menghitung sudut awal agar elemen tersebar merata
         const angle = (360 / React.Children.count(children)) * index;
         return (
           <div
@@ -41,8 +46,7 @@ export function OrbitingCircles({
               "--icon-size": `${iconSize}px`,
             }}
             className={twMerge(
-              `absolute flex size-[var(--icon-size)] transform-gpu animate-orbit items-center justify-center rounded-full ${
-                reverse ? "[animation-direction:reverse]" : ""
+              `absolute flex size-[var(--icon-size)] transform-gpu animate-orbit items-center justify-center rounded-full ${reverse ? "[animation-direction:reverse]" : ""
               }`,
               className
             )}
