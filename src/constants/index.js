@@ -42,9 +42,9 @@ export const mySocials = [
     icon: "/assets/socials/whatsApp.svg",
   },
   {
-    name: "Linkedin",
-    href: "https://www.linkedin.com/in/ahmad-rafi-rusydi/",
-    icon: "/assets/socials/linkedIn.svg",
+    name: "X",
+    href: "https://x.com/adrapier3",
+    icon: "/assets/socials/x.svg",
   },
   {
     name: "Github",
