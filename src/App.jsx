@@ -1,7 +1,7 @@
 // Mengimpor React untuk membuat komponen
 import React from "react";
 // Mengimpor komponen Navbar dari folder sections
-import Navbar from "./sections/navbar";
+import Navbar from "./sections/Navbar";
 // Mengimpor komponen Hero dari folder sections
 import Hero from "./sections/Hero";
 // Mengimpor komponen About dari folder sections
